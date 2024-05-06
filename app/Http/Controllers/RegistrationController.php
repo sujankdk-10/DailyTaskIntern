@@ -11,7 +11,8 @@ use function Laravel\Prompts\form;
 
 class RegistrationController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('form');
     }
 
@@ -20,7 +21,8 @@ class RegistrationController extends Controller
             [
                 'name'=>'required',
                 'email'=>'required|email',
-                'password'=>'required'
+                'password'=>'required',
+                'confirm_password'=>'required|confirmed'
             ]
             );
         echo"<pre>";

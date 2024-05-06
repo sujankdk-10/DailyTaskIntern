@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RegistrationController;
 
+use App\Http\Controllers\CustomerController;
+
+use App\Models\Customer;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -94,3 +97,15 @@ Route::fallback(function(){
 Route::get('/register',[RegistrationController::class, 'index']);
 
 Route::post('/register',[RegistrationController::class, 'register']);
+
+
+// Route::get('/customer',function(){
+//     $customers = Customer::all();
+//     echo "<pre>";
+//     print_r($customers->toArray());
+// });
+
+Route::get('/customer/create', [CustomerController::class, 'create']);
+Route::post('/customer', [CustomerController::class, 'store']);
+Route::post('/customer/view',[CustomerController::class,'register']);
+Route::get('/customer/view',[CustomerController::class,'view']);
