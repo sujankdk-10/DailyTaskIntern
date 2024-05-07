@@ -7,9 +7,9 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\CustomerController;
 
 use App\Models\Customer;
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('index');
+});
 
 // Route::get('/hello', function() {
 //     return view('post');
@@ -75,7 +75,7 @@ Route::prefix('page')->group(function(){
     
     
     
-    Route::get('/gallery',function(){
+    Route::get('/gallery',function(){  
         return "<h1>Gallery Page</h1>";
     });
     
@@ -105,7 +105,11 @@ Route::post('/register',[RegistrationController::class, 'register']);
 //     print_r($customers->toArray());
 // });
 
-Route::get('/customer/create', [CustomerController::class, 'create']);
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
 Route::post('/customer', [CustomerController::class, 'store']);
-Route::post('/customer/view',[CustomerController::class,'register']);
-Route::get('/customer/view',[CustomerController::class,'view']);
+Route::get('/customer/view',[CustomerController::class,'register']);
+Route::get('/customer',[CustomerController::class,'view']);
+
+Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
+Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');

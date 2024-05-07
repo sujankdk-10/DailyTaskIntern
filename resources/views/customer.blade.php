@@ -14,15 +14,36 @@
     </style>
 
 </head>
-<body class="bg-red">
-    <form action="{{url('/')}}/customer" method="post">
+<body class="bg-dark">
+    <div class="container">
+        <nav class="navbar navbar-expand-sm">
+            <a class="navbar-brand" href="#" style="color:white">Sujan</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/')}}" style="color:white">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/register')}}" style="color:white">Register</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="{{url('/customer ')}}" style="color:white">Customer</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>  
+    </div>
+    <form action="{{$url}}" method="post">
         @csrf 
         <div class="container mt-4 card p-3 bg-white"> 
-            <h3 class="text-center text-primary">Customer Registration</h3>
+            <h3 class="text-center text-primary">{{$title}}</h3>
             <div class="row">
                 <div class="form-group col-md-6 required">
                     <label for="">Name:</label>
-                    <input type="text" name="name" id="" class="form-control" value="{{old('name')}}" />
+                    <input type="text" name="name" id="" class="form-control" value="{{old('name')}} {{$customer->name}}" />
                     <span class="text-danger">
                         @error('name')
                         {{$message}}
@@ -31,7 +52,7 @@
                 </div>
                 <div class="form-group col-md-6 required">
                     <label for="">Email:</label>
-                    <input type="text" name="email" id="" class="form-control" value="{{old('email')}}" />
+                    <input type="text" name="email" id="" class="form-control" value="{{old('email')}} {{$customer->email}}" />
                     <span class="text-danger">
                         @error('email')
                         {{$message}}
@@ -59,21 +80,21 @@
                 <!-- Country -->
                 <div class="form-group col-md-6">
                     <label for="country">Country:</label>
-                    <input type="text" name="country" id="" class="form-control" value="{{old('country')}}"/>                     
+                    <input type="text" name="country" id="" class="form-control" value="{{old('country')}} {{$customer->country}}"/>                     
                     
                 </div>
 
                 <!-- District -->
                 <div class="form-group col-md-6">
                     <label for="district">District:</label>
-                    <input type="text" name="district" id="" class="form-control"value="{{old('district')}}" />
+                    <input type="text" name="district" id="" class="form-control"value="{{old('district')}} {{$customer->district}}" />
                     
                 </div>
 
                 <!-- Address -->
                 <div class="form-group col-md-6">
                     <label for="address">Address:</label>
-                    <input type="text" name="address" id="address" class="form-control" value="{{old('address')}}"/>
+                    <input type="text" name="address" id="address" class="form-control" value="{{old('address')}} {{$customer->address}}"/>
                    
                 </div>
 
@@ -81,15 +102,15 @@
                 <div class="form-group col-md-6">
                     <label>Gender:</label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="male" value="M" {{ old('gender') == 'M' ? 'checked' : ''}}>
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="M" {{ $customer->gender == 'M' ? 'checked' : ''}}>
                         <label class="form-check-label" for="male">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="female" value="F" {{ old('gender') == 'F' ? 'checked' : ''}}>
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="F" {{ $customer->gender == 'F' ? 'checked' : ''}}>
                         <label class="form-check-label" for="female">Female</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="other" value="O" {{ old('gender') == 'O' ? 'checked' : ''}}>
+                        <input class="form-check-input" type="radio" name="gender" id="other" value="O" {{ $customer->gender == 'O' ? 'checked' : ''}}>
                         <label class="form-check-label" for="other">Other</label>
                     </div>
                     
@@ -98,7 +119,7 @@
                 <!-- Date of Birth -->
                 <div class="form-group col-md-6">
                     <label for="dob">Date of Birth:</label>
-                    <input type="date" name="dob" id="dob" class="form-control" value="{{old('dob')}}"/>
+                    <input type="date" name="dob" id="dob" class="form-control" value="{{$customer->dob}}"/>
                     
                 </div>
         </div> 
