@@ -30,7 +30,7 @@
                         <a class="nav-link" href="{{url('/register')}}" style="color:white">Register</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="{{url('/customer ')}}" style="color:white">Customer</a>
+                         <a class="nav-link" href="{{url('/customer')}}" style="color:white">Customer</a>
                     </li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="form-group col-md-6 required">
                     <label for="">Name:</label>
-                    <input type="text" name="name" id="" class="form-control" value="{{old('name')}} {{$customer->name}}" />
+                    <input type="text" name="name" id="" class="form-control" value=" {{$customer->name}}" />
                     <span class="text-danger">
                         @error('name')
                         {{$message}}
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group col-md-6 required">
                     <label for="">Email:</label>
-                    <input type="text" name="email" id="" class="form-control" value="{{old('email')}} {{$customer->email}}" />
+                    <input type="text" name="email" id="" class="form-control" value=" {{$customer->email}}" />
                     <span class="text-danger">
                         @error('email')
                         {{$message}}
@@ -80,21 +80,21 @@
                 <!-- Country -->
                 <div class="form-group col-md-6">
                     <label for="country">Country:</label>
-                    <input type="text" name="country" id="" class="form-control" value="{{old('country')}} {{$customer->country}}"/>                     
+                    <input type="text" name="country" id="" class="form-control" value=" {{$customer->country}}"/>                     
                     
                 </div>
 
                 <!-- District -->
                 <div class="form-group col-md-6">
                     <label for="district">District:</label>
-                    <input type="text" name="district" id="" class="form-control"value="{{old('district')}} {{$customer->district}}" />
+                    <input type="text" name="district" id="" class="form-control"value=" {{$customer->district}}" />
                     
                 </div>
 
                 <!-- Address -->
                 <div class="form-group col-md-6">
                     <label for="address">Address:</label>
-                    <input type="text" name="address" id="address" class="form-control" value="{{old('address')}} {{$customer->address}}"/>
+                    <input type="text" name="address" id="address" class="form-control" value=" {{$customer->address}}"/>
                    
                 </div>
 

@@ -12,8 +12,9 @@ class CustomerController extends Controller
     public function create()
     {
         $url = url('/customer');
+        $customer = new Customer();
         $title = "Customer Registration";
-        $data = compact('url','title');
+        $data = compact('url','title','customer');
         return view('customer')->with($data);
     }
 
@@ -31,7 +32,6 @@ class CustomerController extends Controller
        $customer->district = $request['district'];
        $customer->country = $request['country'];
        $customer->dob = $request['dob'];
-       $customer->name = $request['name'];
        $customer->password = md5($request['password']);
        $customer->save();
 
