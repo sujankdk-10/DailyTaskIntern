@@ -67,6 +67,7 @@
                                     Other
                                     @endif
                                 </td>
+                                {{-- <td>{{get_formatted_date($customer->dob, "d-M-Y") }}</td> --}}
                                 <td>{{$customer->dob}}</td>
                                 <td>{{$customer->address}}</td>
                                 <td>{{$customer->district}}</td>

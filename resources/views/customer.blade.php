@@ -36,7 +36,9 @@
             </div>
         </nav>  
     </div>
-    <form action="{{$url}}" method="post">
+    {{-- <form action="{{$url}}" method="post"> --}}
+    <form action="{{ url('/customer/submit') }}" method="post">
+
         @csrf 
         <div class="container mt-4 card p-3 bg-white"> 
             <h3 class="text-center text-primary">{{$title}}</h3>

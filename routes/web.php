@@ -107,9 +107,11 @@ Route::post('/register',[RegistrationController::class, 'register']);
 
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
 Route::post('/customer', [CustomerController::class, 'store']);
-Route::get('/customer/view',[CustomerController::class,'register']);
+// Route::get('/customer/submit',[CustomerController::class,'register']);
 Route::get('/customer',[CustomerController::class,'view']);
 
 Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
 Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
 Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
+
+Route::post('/customer/submit', [CustomerController::class, 'submit']);

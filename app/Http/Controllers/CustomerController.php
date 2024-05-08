@@ -20,8 +20,8 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-       echo "<pre>" ;
-       print_r($request->all());
+        
+       
 
        //laravel vitra model ko through chalni wala insert querty
        $customer = new Customer;
@@ -47,13 +47,13 @@ class CustomerController extends Controller
         return view('customer-view')->with($data);
     }
 
-    public function register(Request $request){
+    public function submit(Request $request){
         $request->validate(
             [
                 'name'=>'required',
                 'email'=>'required|email',
                 'password'=>'required',
-                'confirm_password'=>'required'
+                'confirm_password'=>'required|same:password'
             ]
             );
     }
