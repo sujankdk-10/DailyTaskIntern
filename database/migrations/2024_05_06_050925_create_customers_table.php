@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id('customer_id');
-            $table->string('name',10);
+            $table->string('name',255);
             $table->string('email',100);
             $table->enum('gender',["M","F","O"]);
             $table->text('address');

@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RegistrationController;
 
+use App\Http\Controllers\ContactController;
+
 use App\Http\Controllers\CustomerController;
 
 use App\Models\Customer;
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('index');
 });
@@ -115,3 +119,36 @@ Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('cust
 Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
 
 Route::post('/customer/submit', [CustomerController::class, 'submit']);
+
+
+Route::get('get-all-session',function(){
+    $session = session()->all();
+    p($session);
+});
+
+Route::get('set-session',function(Request $request){
+    $request->session()->put('user_name','Sujan Khadka');
+    $request->session()->put('user_id','191837');
+    $request->session()->flash('status','Success');
+    return redirect('get-all-session');
+});
+
+Route::get('destroy-session',function(){
+    session()->forget(['user_name','user_id']);
+   // session()->forget('user_id');
+    return redirect('get-all-session');
+});
+
+Route::get('/customer/trash', [CustomerController::class, 'trash']);
+
+
+Route::get('/customer/restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
+
+Route::get('/customer/force-delete/{id}',[CustomerController::class,'forceDelete'])->name('customer.force-delete');
+
+
+Route::get('/upload',function(){
+   return view('upload'); 
+});
+
+Route::post('/upload', [ContactController::class,'upload']);

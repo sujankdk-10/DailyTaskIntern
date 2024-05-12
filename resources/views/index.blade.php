@@ -33,5 +33,8 @@
             </nav>  
         </div>
     </div>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <h1 class="display-1">@lang('lang.welcome')</h1>
+    </div>
    </body>
 </html>

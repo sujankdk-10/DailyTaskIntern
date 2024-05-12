@@ -40,11 +40,23 @@ class CustomerController extends Controller
 
     }
 
-    public function view()
+    public function view(Request $request)
     {
-        $customers = Customer::all();
-        $data = compact('customers');
+        $search = $request['search'] ?? "";
+            if($search !=""){
+                //where clause
+                $customers =Customer::where('name','like',"%$search%")->orWhere('email','like',"%$search%")->get();
+            }else{
+               $customers = Customer::paginate(15); 
+            }
+        $data = compact('customers','search');
         return view('customer-view')->with($data);
+    }
+
+    public function trash(){
+        $customers= Customer::onlyTrashed()->get();
+        $data = compact('customers');
+        return view('customer-trash')->with($data);
     }
 
     public function submit(Request $request){
@@ -71,6 +83,24 @@ class CustomerController extends Controller
             $customer->delete();
         }
         return redirect('customer');
+    }
+
+    public function restore($id)
+    {
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->restore();
+        }
+        return redirect('customer');
+    }
+
+    public function forceDelete($id)
+    {
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->forceDelete();
+        }
+        return redirect()->back();
     }
 
     public function edit($id){
