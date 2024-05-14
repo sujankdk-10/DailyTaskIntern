@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 
 use App\Http\Controllers\RegistrationController;
 
@@ -8,12 +9,16 @@ use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\CustomerController;
 
+use App\Http\Controllers\IndexController;
+
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/data',[IndexController::class,'index']);
 
 // Route::get('/hello', function() {
 //     return view('post');
@@ -152,3 +157,11 @@ Route::get('/upload',function(){
 });
 
 Route::post('/upload', [ContactController::class,'upload']);
+
+
+Route::get('/{lang?}', function ($lang = null) {
+    App::setLocale($lang);
+    return view('index');
+});
+
+ 

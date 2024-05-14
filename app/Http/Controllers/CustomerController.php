@@ -66,7 +66,7 @@ class CustomerController extends Controller
                 'email'=>'required|email',
                 'password'=>'required',
                 'confirm_password'=>'required|same:password'
-            ]
+            ] 
             );
     }
 

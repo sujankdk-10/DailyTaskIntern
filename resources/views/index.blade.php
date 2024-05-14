@@ -32,9 +32,24 @@
                 </div>
             </nav>  
         </div>
+        
+        
     </div>
+    
+        <div class=" top-0 end-0 p-3">
+            <a href="{{url('/')}}" class="text-sm text-gray-700 underline">English</a>
+            <a href="{{url('/ne')}}" class="text-sm text-gray-700 underline">Nepali</a>
+            <a href="{{url('/ja')}}" class="text-sm text-gray-700 underline">Japanese</a>
+        </div>
+    
+    
+    
+    
+    
+
     <div class="d-flex align-items-center justify-content-center vh-100">
-        <h1 class="display-1">@lang('lang.welcome')</h1>
+        <h1 class="display-1">@lang('messages.welcome')</h1>
     </div>
+    
    </body>
 </html>
